@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+</head>
+<body>
+  <a-scene>
+    <a-sky color="#bae3f7"></a-sky> 
+
+    <a-torus id="c1" position="0 0.8 -2.5" radius="3" radius-tubular="0.1" arc="180" color="#032e0a"></a-torus>
+   
+    <a-torus id="c2" position="0 0.8 -3" radius="3" radius-tubular="0.2" arc="180" color="#edf50c"></a-torus>
+   
+    <a-torus id="c3" position="0 0.5 -5" radius="4" radius-tubular="0.3" arc="180" color="#1405f0"></a-torus>
+    
+    <a-torus id="c4" position="0 0.09 -7" radius="5" radius-tubular="0.4" arc="180" color="#22063b"></a-torus>
+
+    <a-plane rotation="-90 0 0" width="90" height="80" position="0 -10 -20" color="#353536"></a-plane>
+       <a-entity position="-1.5 0.5 -8">
+        <a-cylinder color="#f05cf7" height="4" radius="0.3"></a-cylinder> 
+      </a-entity>
+      <a-entity position="1.5 0.5 -8">
+        <a-cylinder color="#f05cf7" height="4" radius="0.3"></a-cylinder> 
+      </a-entity>
+  
+      <a-entity position="0 1.8 -7.6">
+        <a-plane color="#f7f9fa" width="2.5" height="1.2"></a-plane> 
+        <a-text value=" Hadi Aqeel " color="#000" align="center" scale="1.8 1.8 1.8"></a-text> 
+      </a-entity>
+
+    <a-entity id="camera" camera look-controls position="0 1.6 0"></a-entity>
+
+    <script>
+      // Get the camera entity
+      var cam = document.querySelector('#camera');
+
+      // Define the rotation speed for the camera
+      var rotationSpeed = 0.01;
+
+      // Function to rotate the camera smoothly
+      function rotateCamera() {
+        // Only rotate the camera when the user is interacting with the scene
+        if (cam.components['look-controls'].isUserZooming || cam.components['look-controls'].isUserMoving || cam.components['look-controls'].isUserLooking) {
+          // Apply the rotation to the camera
+          cam.object3D.rotation.y += rotationSpeed;
+        }
+      }
+
+      // Call the rotateCamera function in a loop
+      setInterval(rotateCamera, 30); // Adjust the interval for smoother or faster rotation
+
+    </script>
+  </a-scene>
+</body>
+</html>
